@@ -50,12 +50,11 @@ def audio_files_analysis(path,saving_path,mfccs_coeff):
         print('Features shape: ', extracted_features.shape)
         print('Labels shape: ', extracted_labels.shape)
 
+    #Date format.
     now=datetime.now()
     format=now.strftime('%d-%m-%Y, Hora: %H, Min: %M')
 
     np.save(saving_path+format+'.npy', extracted_features)
     np.save(saving_path+format+'.npy', extracted_labels)
-
-
-
+    
     return features, labels
