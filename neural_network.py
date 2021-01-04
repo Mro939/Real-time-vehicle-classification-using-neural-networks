@@ -19,6 +19,43 @@ from keras.models import Sequential
 
 
 
+
+def train_test_split(features_path, lables_path):
+
+    features = np.load(features_path+'.npy')
+    labels = np.load(lables_path+'.npy')
+    print('Dimensiones del array features: ', features.shape)
+    print('Dimensiones del array labels: ', labels.shape)
+
+
+    x_train, x_test, y_train, y_test = train_test_split(features, labels, test_size=0.1, random_state=0, stratify=labels, shuffle='True')
+    x_train, x_validation, y_train, y_validation = train_test_split(x_train, y_train, test_size=0.1, random_state=0, stratify=y_train, shuffle='True')
+
+    print("The dimensions of X train are: ", np.shape(x_train))
+    print("The dimensions of X validation are: ", np.shape(x_validation))
+    print("The dimensions of X test are: ", np.shape(x_test))
+
+    print("Labels classes", np.unique(y_train))
+    n_samples = len(y_train)
+    print("Number of training samples: " + str(n_samples))
+
+    order = np.array(range(n_samples))
+    np.random.shuffle(order)
+    x_train = x_train[order]
+    y_train = y_train[order]
+
+    lb = LabelEncoder()
+    y_train_lb = np_utils.to_categorical(lb.fit_transform(y_train))
+    y_test_lb = np_utils.to_categorical(lb.fit_transform(y_test))
+    y_validation_lb = np_utils.to_categorical(lb.fit_transform(y_validation))
+
+    print('Label encoder classes:', y_train_lb[1])
+
+    return x_train, x_test, x_validation, y_train_lb, y_test_lb, y_validation_lb
+
+
+
+
 def neural_network(x_train, x_test, x_validation, y_train_lb, y_test_lb, y_validation_lb, epochs, batch_size):
 
     #-----------------------------------NEURAL NETWORK ARCHITECTURE.-------------------------------------------
@@ -58,9 +95,8 @@ def neural_network(x_train, x_test, x_validation, y_train_lb, y_test_lb, y_valid
     model.compile(loss='binary_crossentropy', metrics=['binary_accuracy'], optimizer='adam')  
     history=model.fit(x_train, y_train_lb, batch_size=batch_size, epochs=epochs, validation_data=(x_validation,y_validation_lb))
     model.summary()
-
-
+    
     return history
 
-
+x_train, x_test, x_validation, y_train_lb, y_test_lb, y_validation_lb = train_test_split()
 
