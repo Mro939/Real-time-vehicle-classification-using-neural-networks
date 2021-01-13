@@ -2,6 +2,8 @@
 
 Real time vehicle classification from mic using a multilayer perceptron neural network (MLP) with keras.
 
+## Continous classification from mic:
+
 Steps to follow:
 
 1. Use feature_extractor.py for extract the audio features (mel frequency cepstral coefficients and chroma spectrum) and saved them in the desired path. This file will create two numpy array.
