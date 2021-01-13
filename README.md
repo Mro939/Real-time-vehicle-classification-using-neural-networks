@@ -1,7 +1,6 @@
-# Real time vehicle classification using a multilayer perceptron neural network (MLP) with keras.
+# Vehicle class classification
 
-
-The following content provides the code of a vehicle class classification using a Multi-Layer Perceptron Neural Network (MLP) architecture with Keras library.
+Real time vehicle classification from mic using a multilayer perceptron neural network (MLP) with keras.
 
 Steps to follow:
 
