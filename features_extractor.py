@@ -1,7 +1,6 @@
 """ 
-This file generates two numpy arrays that will contain the features 
-and labels of each loaded audio file. The features selected in this 
-case are the mel frecuency cepstral coefficients and the chroma spectrogram.
+This file generates two numpy arrays that contain the features (mel frecuency cepstral coefficients and chroma spectrogram)
+and labels for each loaded audio sample. The arrays will be saved in the desired path in a .npy format.
 """
 # Audio analysis
 import librosa
@@ -15,22 +14,18 @@ def features_extraction(audio_file, hop_length):
     
     # Loading audio file:
     X, sample_rate = librosa.load(audio_file)
-    
     # Compute mel frecuency cepstral coefficients and chroma spectrogram.
-    mfccs = np.array(librosa.feature.mfcc(y=X, sr=sample_rate, 
-                                          hop_length=hop_length, n_mfcc=20).T)
-    chroma = np.array(librosa.feature.chroma_stft(y=X, sr=sample_rate,
-                                                  hop_length=hop_length).T)
-    
+    mfccs = np.array(librosa.feature.mfcc(y=X, sr=sample_rate, hop_length=hop_length, n_mfcc=20).T)
+    chroma = np.array(librosa.feature.chroma_stft(y=X, sr=sample_rate, hop_length=hop_length).T)
     ext_features = np.hstack([mfccs, chroma])
     
     return ext_features
 
 
 def audio_files_analysis(path, saving_path, hop_length):
-    # MFCCS dimension = 20
     
-    # CHROMA dimension = 12
+    # np.shape(mfccs)[1] = 20
+    # np.shape(chroma)[1] = 12
     DIM = 32
 
     extracted_features = np.empty([0, DIM])
@@ -54,22 +49,18 @@ def audio_files_analysis(path, saving_path, hop_length):
         print('Features array shape: ', extracted_features.shape)
         print('Labels array shape: ', np.shape(labels))
 
-    # Saving features and labels in numpy array format.
+    # Saving features and labels as numpy arrays.
     np.save(saving_path+'features.npy', extracted_features)
     np.save(saving_path+'labels.npy',labels)
 
 
-    # Uncomment the followingcode lines for adding date format when saving features and labels
+    # Uncomment the following lines for adding a date format when saving features and labels.
     # now=datetime.now()
     # format=now.strftime('%d-%m-%Y, Hora: %H, Min: %M')
     # np.save(saving_path+format+'.npy', extracted_features)
     # np.save(saving_path+format+'.npy', extracted_labels)  
 
-# -------------------------------Execute features extraction. Saved in saving_path:----------------------------------
-path = '/Users/miguel.r/Desktop/NN vehiculos/Audios vehiculos grabados/Todos'
-saving_path = '/Users/miguel.r/Desktop/NN vehiculos/metodo_MFCCS+CHROMA/MFCCS+CHROMA features'
 
-path_test = '/Users/miguel.r/Desktop/NN vehiculos/Audios vehiculos grabados/testing'
-saving_path_test = '/Users/miguel.r/Desktop/'
-
+path = '/Users/miguel.r/Desktop/project/Audios/all'
+saving_path = '/Users/miguel.r/Desktop/project/MFCCS+CHROMA features'
 audio_files_analysis(path_test, saving_path_test, 512)
