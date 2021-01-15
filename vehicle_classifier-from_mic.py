@@ -30,7 +30,7 @@ model.load_weights(Path + model_path + '.h5')
 
 # Label Encoder:
 lb = LabelEncoder()
-lb.fit_transform(['light', 'haevy'])  
+lb.fit_transform(['light', 'heavy'])  
 
 # Auxiliars functions
 def plotAudio(output):
