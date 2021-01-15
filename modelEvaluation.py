@@ -157,6 +157,6 @@ model_plots(history)
 #--------------Saving the model:-------------------------------------
 saving_path = '/Users/miguel.r/Desktop/'
 model_json = model.to_json()
-with open(saving_path+"_acc_"+acc+".json", "w") as json_file:
+with open(saving_path+"model_acc_"+acc+".json", "w") as json_file:
     json_file.write(model_json)
-model.save_weights(saving_path+"_acc_"+acc+".h5")
+model.save_weights(saving_path+"model_acc_"+acc+".h5")
