@@ -129,8 +129,7 @@ lb = LabelEncoder()
 y_train_lb = np_utils.to_categorical(lb.fit_transform(y_train))
 y_test_lb = np_utils.to_categorical(lb.fit_transform(y_test))
 y_validation_lb = np_utils.to_categorical(lb.fit_transform(y_validation))
-print('Label encoder classes:', y_train_lb[1])
-
+print('Number of label encoder classes:', len(np.unique(y_train)))
 
 #-----------Training the model:-------------------------------------
 
