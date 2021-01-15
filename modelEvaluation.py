@@ -25,7 +25,7 @@ def train_test(features_path, lables_path, test_size, val_size):
 
     #Loading features and labels
     features = np.load(features_path)
-    labels = np.load(lables_path)
+    labels = np.load(labels_path)
     #print('Dimensiones del array features: ', features.shape)
     #print('Dimensiones del array labels: ', labels.shape)
 
@@ -122,10 +122,8 @@ def model_plots(history):
 
 features_path = '/Users/miguel.r/Desktop/NN vehiculos/metodo_MFCCS+CHROMA/MFCCS+CHROMA features/features_27-11-2020, Hora: 14, Min: 56.npy'
 labels_path = '/Users/miguel.r/Desktop/NN vehiculos/metodo_MFCCS+CHROMA/MFCCS+CHROMA features/labels_27-11-2020, Hora: 14, Min: 56.npy'
-features_path_test =  '/Users/miguel.r/Desktop/features.npy'
-labels_path_test = '/Users/miguel.r/Desktop/labels.npy'
 
-x_train, x_test, x_validation, y_train, y_test, y_validation, dim = train_test(features_path_test, labels_path_test, 0.1, 0.1)
+x_train, x_test, x_validation, y_train, y_test, y_validation, dim = train_test(features_path, labels_path, 0.1, 0.1)
 
 lb = LabelEncoder()
 y_train_lb = np_utils.to_categorical(lb.fit_transform(y_train))
