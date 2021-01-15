@@ -19,7 +19,6 @@ from sklearn.metrics import mean_squared_error
 # Loading the model:
 
 Path = r'/Users/miguel.r/Desktop/NN vehiculos/'
-modelSTFT_path = "metodo_III/Resultados/stft_18-11-2020, Hora: 17, Min: 55_acc_88.89"
 model_path = "metodo_MFCCS+CHROMA/Resultados/mfccs+chroma_512-512-512-128_epochs300-35027-11-2020, Hora: 15, Min: 08_acc_93.86"
 
 # Model reconstruction:
