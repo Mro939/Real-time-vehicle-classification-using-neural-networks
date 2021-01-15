@@ -18,14 +18,13 @@ from sklearn.metrics import mean_squared_error
 
 # Loading the model:
 
-Path = r'/Users/miguel.r/Desktop/NN vehiculos/'
-model_path = "metodo_MFCCS+CHROMA/Resultados/mfccs+chroma_512-512-512-128_epochs300-35027-11-2020, Hora: 15, Min: 08_acc_93.86"
+Path = r'/Users/miguel.r/Desktop/NN vehiculos/metodo_MFCCS+CHROMA/model_acc_93.86'
 
 # Model reconstruction:
-with open(Path + model_path + '.json', 'r') as f:
+with open(model_path + '.json', 'r') as f:
     model = model_from_json(f.read())
 
-model.load_weights(Path + model_path + '.h5')
+model.load_weights(model_path + '.h5')
 
 # Label Encoder:
 lb = LabelEncoder()
