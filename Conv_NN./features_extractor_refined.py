@@ -1,5 +1,5 @@
 """
-This file generates two numpy arrays that will contain the features
+This file generates a pandas dataframe that contains the features
 and labels of each loaded audio file. The features selected in this
 case are the mel frecuency cepstral coefficients and the chroma spectrogram.
 """
