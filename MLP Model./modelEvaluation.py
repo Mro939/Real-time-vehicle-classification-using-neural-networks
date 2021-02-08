@@ -2,14 +2,11 @@ import numpy as np
 import os
 import pandas as pd
 
-
 # Preprocessing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import StratifiedKFold
 from keras.utils import to_categorical
-
-
 
 from mlxtend.plotting import plot_confusion_matrix
 from neural_network_CORREGIDO import MLP_neural_network
@@ -108,8 +105,7 @@ def model_plots(history):
     plt.legend()
     plt.show()
 
-
-
+    
 # Loading features and Train/Test Split:
 
 dataframe_path = '/Users/miguel.r/Desktop/featuresdf.pkl'
@@ -144,8 +140,7 @@ print('Prediction classes: ', np.unique(prediction))
 
 conf_matrix(y_test_lb, prediction)
 model_plots(history)
-
-    
+  
 # Saving the model:
 saving_path = '/Users/miguel.r/Desktop/'
 model_json = model.to_json()
