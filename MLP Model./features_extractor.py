@@ -59,7 +59,7 @@ def audio_files_analysis(path, saving_path):
     # np.save(saving_path+format+'.npy', extracted_features)
     # np.save(saving_path+format+'.npy', extracted_labels)
 
-# -------------------------------Execute features extraction. Saved in saving_path:----------------------------------
+# Features extraction, results saved in saving_path.
 path = '/Users/miguel.r/Desktop/CITSEM/NN vehiculos/Audios grabados/Todos'
 saving_path = '/Users/miguel.r/Desktop/NN vehiculos/metodo_MFCCS+CHROMA/MFCCS+CHROMA features'
 
