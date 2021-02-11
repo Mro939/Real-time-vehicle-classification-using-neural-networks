@@ -40,18 +40,17 @@ def audio_files_analysis(path, saving_path):
     for clase in clases:
         for file in glob.glob(os.path.join(path, clase, file_ext)):
             file_counter += 1
-            print(file_counter, clase + ': ', file)
+            print(file_counter, clase + ': ', file.split('/')[-1:])
 
             class_label = clase
             data = extract_features(file)
             features.append([data, class_label])
 
     featuresdf = pd.DataFrame(features, columns=['feature','class_label'])
+    print('Finished feature extraction from ', len(featuresdf), ' files')
 
     # Saving features as a numpy array.
     featuresdf.to_pickle(saving_path+"featuresdf.pkl")
-    #np.save(saving_path+'features.npy', featuresdf)
-
 
     # Uncomment the followingcode lines for adding date format when saving features and labels
     # now=datetime.now()
